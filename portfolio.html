@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamad Arshia Nooraien - Resume</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+        /* Header and Footer */
+        .header, .footer {
+            background-color: #1A3C34;
+            color: white;
+            padding: 1rem 0;
+            position: relative;
+            z-index: 1000;
+        }
+        .header .navbar-brand, .footer .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            transition: transform 0.3s;
+        }
+        .header .navbar-brand:hover, .footer .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+        .header .nav-link, .footer .nav-link {
+            color: #A9BDB8 !important;
+            margin: 0 15px;
+            transition: color 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        .header .nav-link:hover, .footer .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        .nav-link i {
+            margin-right: 5px;
+        }
+        .btn-download {
+            background-color: white;
+            color: #1A3C34;
+            border-radius: 20px;
+            padding: 8px 20px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+        }
+        .btn-download:hover {
+            background-color: #A9BDB8;
+            color: white;
+            transform: scale(1.05);
+            text-decoration: none;
+        }
+        /* Hero Section */
+        .hero {
+            background-color: #1A3C34;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 60, 52, 0.8), rgba(0, 188, 212, 0.2));
+            z-index: 0;
+        }
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #A9BDB8;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 0.3s;
+        }
+        .hero .email-link {
+            font-size: 1rem;
+            color: #E0F7FA;
+            margin-bottom: 2rem;
+            display: inline-flex;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 0.4s;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .hero .email-link:hover {
+            color: white;
+            transform: scale(1.05);
+            text-decoration: none;
+        }
+        .hero .email-link i {
+            margin-right: 8px;
+        }
+        .btn-about {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 30px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 0.6s;
+        }
+        .btn-about:hover {
+            background-color: white;
+            color: #1A3C34;
+            transform: scale(1.05);
+            text-decoration: none;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Content Sections */
+        .section {
+            padding: 50px 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .section h2 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #1A3C34;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, #1A3C34, #00BCD4);
+            transition: width 0.3s;
+        }
+        .section:hover h2::after {
+            width: 100px;
+        }
+        .service-card {
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .service-card img {
+            width: 50px;
+            margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+        .service-card:hover img {
+            transform: scale(1.1);
+        }
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: #1A3C34;
+            margin-bottom: 1rem;
+        }
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .service-card ul li {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+        .service-card ul li:hover {
+            color: #1A3C34;
+        }
+        /* Detailed Sections */
+        .detailed-section {
+            padding: 50px 20px;
+            background-color: #f8f9fa;
+            transition: background-color 0.3s;
+        }
+        .detailed-section:hover {
+            background-color: #f0f4f8;
+        }
+        .detailed-section h2 {
+            color: #1A3C34;
+            border-bottom: none;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        .list-group-item {
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .list-group-item:hover {
+            background-color: #e9f7ff;
+        }
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1A3C34;
+            color: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        #back-to-top:hover {
+            transform: scale(1.1);
+        }
+        #back-to-top.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark container">
+            <a class="navbar-brand" href="#">M. A. N.</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#extracurricular">Extracurricular</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#hobbies">Hobbies</a></li>
+                </ul>
+                <a href="https://drive.google.com/drive/folders/1BFdILhVTPR5auelIlvP_iuWmfsj9Nrf0?usp=sharing" class="btn-download" target="_blank">Google Drive</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>I'm Mohamad Arshia Nooraien</h1>
+            <p>Bachelor of Technology | Web Developer | Passionate about Programming and Innovation</p>
+            <a href="mailto:arshiambu@gmail.com" class="email-link">
+                <i class="fas fa-envelope"></i> arshiambu@gmail.com
+            </a>
+            <div>
+                <a href="#experience" class="btn-about">About Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section (Adapted to Skills, Experience, Projects) -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 service-card">
+                    <img src="skills.png" alt="Skills Icon">
+                    <h3>Skills</h3>
+                    <ul>
+                        <li>JAVA, Python, C</li>
+                        <li>HTML, CSS, JavaScript</li>
+                        <li>SQL, Bootstrap</li>
+                        <li>Git, GitHub</li>
+                        <li>MongoDB, Oracle Database</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 service-card">
+                    <img src="experience.png" alt="Experience Icon">
+                    <h3>Experience</h3>
+                    <ul>
+                        <li>AWS Virtual Internship [AICTE]</li>
+                        <li>Jun. 2024 - Aug. 2024</li>
+                        <li>AWS Cloud and Machine Learning</li>
+                        <li>Earned Certification</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 service-card">
+                    <img src="projects.png" alt="Projects Icon">
+                    <h3>Projects</h3>
+                    <ul>
+                        <li>Smart Parking Solution</li>
+                        <li>Team Lead, Dec. 2024</li>
+                        <li>IoT-driven, React.js, Java</li>
+                        <li>Responsive UI/UX Design</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Sections -->
+    <!-- Education -->
+    <section id="education" class="detailed-section">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Mohan Babu University</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Bachelor of Technology, CGPA 9.52</h6>
+                    <p class="card-text">Sept. 2022 - Jan. 2026</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Narayana Jr. College</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Andhra Pradesh State Board of Intermediate Education, 84.1%</h6>
+                    <p class="card-text">July 2020 - May 2022</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sri Venkateswara Children's High school</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Andhra Pradesh State Board of Secondary Education, CGPA 10.0</h6>
+                    <p class="card-text">March 2020</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="detailed-section">
+        <div class="container">
+            <h2>Skills & Interests</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Languages</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">JAVA, Python, C</li>
+                        <li class="list-group-item">HTML, CSS, JavaScript</li>
+                        <li class="list-group-item">SQL, Bootstrap</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Developer Tools</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Git, GitHub</li>
+                        <li class="list-group-item">VScode, Eclipse</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Cloud/Database & Web</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">MongoDB, Oracle Database</li>
+                        <li class="list-group-item">Responsive Design, UI/UX</li>
+                    </ul>
+                </div>
+            </div>
+            <h5 class="mt-3">Soft Skills</h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Team Collaboration, Communication</li>
+                <li class="list-group-item">Problem Solving, Time Management</li>
+            </ul>
+            <h5 class="mt-3">Area of Interest</h5>
+            <p>Programming, Web Development</p>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="detailed-section">
+        <div class="container">
+            <h2>Experience</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">AWS Virtual Internship [AICTE]</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Jun 2024 - Jul 2025</h6>
+                    <p class="card-text">
+                        Successfully completed a comprehensive internship on AWS Cloud and Machine Learning, gaining hands-on experience in building and deploying cloud-based machine learning models.<br>
+                        Earned an AWS Cloud certification.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="detailed-section">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Smart Parking Solution</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Team Lead, Dec. 2024</h6>
+                    <p class="card-text">
+                        Led a team to develop an IoT-driven smart parking solution for college campuses using React.js and Java.<br>
+                        Designed a responsive website with a visually captivating UI/UX, featuring parking-themed animations and a green-and-white aesthetic [prototype].
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extracurricular -->
+    <section id="extracurricular" class="detailed-section">
+        <div class="container">
+            <h2>Extracurricular Activities</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Event Management Lead at Indian Society For Technical Education</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Volunteer, Sept. 2023 - Present</h6>
+                    <p class="card-text">
+                        Spearheaded management of technical events, workshops, Hackathons and also non technical events at Mohan Babu University.<br>
+                        Led cross-functional teams from various institutions and event operations, implementing digital tools for efficiency.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements" class="detailed-section">
+        <div class="container">
+            <h2>Achievements</h2>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">IBM National Code Verse Hack Fest 2K24 (Data Analytics) - 1st Runner-up, April 2, 2024</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications" class="detailed-section">
+        <div class="container">
+            <h2>Certifications</h2>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">AWS Cloud Foundations - AWS Skill builder</li>
+                <li class="list-group-item">Artificial Intelligence and Machine learning Primer Certification (38 Hrs) - Infosys SpringBoard</li>
+                <li class="list-group-item">Python Essentials 12, Cybersecurity Fundamentals - Cisco Networking</li>
+                <li class="list-group-item">Full Stack Application Development - AICTE </li>
+                <li class="list-group-item">Pearson MePro Level 10 Proficient</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Hobbies -->
+    <section id="hobbies" class="detailed-section">
+        <div class="container">
+            <h2>Hobbies</h2>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Watching Formula 1</li>
+                <li class="list-group-item">Photography</li>
+                <li class="list-group-item">Creative Writing</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <nav class="navbar navbar-expand-lg navbar-dark container">
+            <a class="navbar-brand" href="#">M. A. N</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#extracurricular">Extracurricular</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#hobbies">Hobbies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/22102A040534" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://drive.google.com/drive/folders/1BFdILhVTPR5auelIlvP_iuWmfsj9Nrf0?usp=sharing" target="_blank"><i class="fab fa-google-drive"></i> Google Drive</a></li>
+                
+                </ul>
+                <a href="https://drive.google.com/file/d/19BmgzlCsSQax7q_S4yCD-kWXbS4t9Por/view?usp=sharing" class="btn-download" target="_blank">Download CV</a>
+            </div>
+        </nav>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" id="back-to-top" class="visible">↑</a>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script>
+        // Smooth scrolling for nav links
+        document.querySelectorAll('.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Section fade-in on scroll
+        const sections = document.querySelectorAll('.section, .detailed-section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => observer.observe(section));
+
+        // Back to Top button
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
